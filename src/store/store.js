@@ -6,8 +6,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     totalTvCount: 10,
+    isLarryHappy: true,
+    isJennyHappy: true,
   },
-  getters: {},
+  getters: {
+    happyStaff: (state) => {
+      return state.isLarryHappy && state.isJennyHappy;
+    },
+  },
   mutations: {
     removeTv(state, amount) {
       state.totalTvCount -= amount;
