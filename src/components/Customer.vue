@@ -9,22 +9,21 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
+
 export default {
   name: "CustomerComponent",
   computed: {
-    totalTvCount() {
-      return this.$store.state.totalTvCount;
-    },
-    happyStaff() {
-      return this.$store.getters.happyStaff;
-    },
+    ...mapState(["totalTvCount"]),
+    ...mapGetters(["happyStaff"]),
   },
   methods: {
+    ...mapActions(["removeTv"]),
     buyTv() {
-      this.$store.dispatch("removeTv");
+      this.removeTv();
     },
     buyTwoTvs() {
-      this.$store.dispatch("removeTv", { amount: 2 });
+      this.removeTv(2);
     },
   },
 };
