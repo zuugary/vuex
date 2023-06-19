@@ -8,6 +8,16 @@ export default new Vuex.Store({
     totalTvCount: 10,
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    removeTv(state) {
+      state.totalTvCount--;
+    },
+  },
+  actions: {
+    removeTv(context) {
+      if (context.state.totalTvCount >= 1) {
+        context.commit("removeTv");
+      }
+    },
+  },
 });
