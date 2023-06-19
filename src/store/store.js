@@ -9,14 +9,16 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    removeTv(state) {
-      state.totalTvCount--;
+    removeTv(state, amount) {
+      state.totalTvCount -= amount;
     },
   },
   actions: {
-    removeTv(context) {
-      if (context.state.totalTvCount >= 1) {
-        context.commit("removeTv");
+    removeTv(context, payload) {
+      const amount = payload?.amount ? payload.amount : 1;
+
+      if (context.state.totalTvCount >= amount) {
+        context.commit("removeTv", amount);
       }
     },
   },
